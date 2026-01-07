@@ -1,0 +1,7 @@
+# Obsidian workspace (local config)
+*.obsidian
+
+# draw.io backup files
+*.drawio.bkp
+
+zsh.md
