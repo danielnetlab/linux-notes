@@ -21,4 +21,4 @@ Notes related to computer networking concepts. *(work in progress)*
 ### 🦀 Rust
 Notes related to learning Rust fundamentals and experiments.
 
-- [`1.1 Variables and Mutability.md`](rust/1.1%20Variables%20and%20Mutability.md) — variables, mutability, and basic ownership concepts
+- [`1.1 Variables and Mutability.md`](rust/00.%20Variables%20and%20Mutability.md) — variables, mutability, and basic ownership concepts
