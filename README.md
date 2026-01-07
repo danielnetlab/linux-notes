@@ -13,4 +13,12 @@ using my own words and examples.
 ## 📚 Contents
 
 ### 🔌 Networking
-Basic networking concepts and devices.
+Notes related to computer networking concepts. *(work in progress)*
+
+- [`00. Network Devices.md`](networking/00.%20Network%20Devices.md) — network definition, nodes, switches, firewalls
+
+
+### 🦀 Rust
+Notes related to learning Rust fundamentals and experiments.
+
+- [`1.1 Variables and Mutability.md`](rust/1.1%20Variables%20and%20Mutability.md) — ariables, mutability, and basic ownership concepts
