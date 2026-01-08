@@ -1,0 +1,350 @@
+## 01.01 Definition
+
+A **data type** defines:
+
+* what kind of value something is
+* how much memory it occupies
+* which operations are allowed
+* how the compiler should handle it
+
+A number is not the same as text, nor is a decimal number the same as a non-decimal one. Rust **needs to know this exactly.**
+
+---
+
+## 01.02 Rust is statically typed
+
+Rust **always requires the type to be known at compile time;** if it can’t infer it, the code is invalid until you annotate it. In other cases, Rust may need the usage context to infer the type.
+
+```rust
+let x = 5;
+let y = x + 3;
+println!("Juan has {y} walnuts");
+```
+
+Rust deduces:
+
+* `5` -> integer
+* default integer -> `i32`
+
+---
+
+## 01.03 Type inference
+
+Rust **automatically deduces the type when there is no ambiguity**.
+
+```rust
+let a = 10      // i32
+let b = 3.14    // f64
+let c = true    // bool
+```
+
+---
+
+## 01.04 Explicit annotation
+
+Sometimes **Rust can’t guess**.
+
+### When there is **ambiguity**.
+
+```rust
+let n = "65".parse();
+```
+
+* Rust thinks:
+
+  * “`i32`? `u8`? `i64`? A minotaur?”
+
+### When the value comes from outside.
+
+```rust
+let age: u8 = input.parse().unwrap();
+```
+
+* Rust thinks:
+
+  * **No type** -> error.
+  * With type -> inner peace 🧘‍♂️.
+
+### When you use `const`.
+
+```rust
+const MAX: i32 = 120;
+```
+
+* Rust makes it clear:
+
+  * it is evaluated at **compile time**
+  * it must be **100% explicit**
+  * it allows no assumptions
+
+---
+
+## 01.05 Type inference *vs* explicit annotation
+
+Variables **always have a type**. The difference is **who decides it**:
+
+* **the compiler** -> inference
+* **you** -> explicit annotation
+
+---
+
+## 01.06 Two major groups of types
+
+Rust divides types into two categories:
+
+* **Scalar types** -> a single value
+* **Compound types** -> several values together
+
+---
+
+# 01.07 Scalar types
+
+---
+
+## 01.07.01 Integers
+
+### Signed integers (`i`)
+
+They can be positive or negative:
+
+```rust
+let x: i32 = -68;
+```
+
+### Unsigned integers (`u`)
+
+They can only be zero or positive:
+
+```rust
+let y: u32 = 68;
+```
+
+---
+
+### Available sizes
+
+| Type          | What it means     |
+| ------------- | ----------------- |
+| `i8/u8`       | 8 bits            |
+| `i16/u16`     | 16 bits           |
+| `i32/u32`     | 32 bits (default) |
+| `i64/u64`     | 64 bits           |
+| `i128/u128`   | 128 bits          |
+| `isize/usize` | architecture size |
+
+Use `i32` by default, use `usize` for indices and sizes, use `u*` only if there will **never** be negatives.
+
+---
+
+## 01.07.02 Numeric literals
+
+Rust allows writing numbers in several bases:
+
+```rust
+let decimal = 98_222;
+let hex     = 0xff;
+let octal   = 0o77;
+let binary  = 0b1111_0000;
+let byte    = b'A';
+```
+
+* `_` only improves readability
+* `b'A'` is a **byte (`u8`)**, not a `char`
+
+---
+
+## 01.07.03 Integer overflow
+
+It happens when you try to store in a variable a number **larger than what that type can represent**.
+
+```rust
+let x: u8 = 255;
+let y = x + 1;
+```
+
+* `u8` = **unsigned** 8-bit integer
+* Valid range: **0 to 255**
+* `255` is already the **maximum**
+* Adding `+1` is like trying to pour extra water into a full glass: **it doesn’t fit**.
+
+---
+
+## 01.07.04 Debug mode
+
+This is a way to **compile** a Rust program. When using `cargo run`, ***Debug*** mode is used. It’s meant for:
+
+* **learning**
+* **detecting errors**
+* making the program **fail hard and early**
+
+---
+
+## 01.07.05 Release mode
+
+Another way to **compile**, used with `cargo run --release`. It’s meant for:
+
+* **it already works**
+* going to **production**
+* needing **maximum performance**
+
+---
+
+## 01.07.06 Floating-point numbers
+
+Decimals in Rust are `f32` and `f64`. The default is `f64`.
+
+```rust
+let x = 2.0;   // f64 by default
+let y: f32 = 3.0;
+```
+
+`f32`
+
+* 32 bits
+* Less precision
+* Faster
+* More rounding errors
+
+`f64`
+
+* 64 bits
+* More precision
+* More stable
+* **Recommended by default**
+
+---
+
+## 01.07.07 Booleans (`bool`)
+
+Logical values are called **booleans**, and there are only 2 values: `true` and `false`.
+
+```rust
+let active = true;
+let finished: bool = false;
+```
+
+---
+
+## 01.07.08 Characters (`char`)
+
+Represents a **Unicode character**, not a byte, and always occupies **4 bytes**.
+
+```rust
+let a = 'a';    // char (4 bytes)
+let x = "a";    // &str (text)
+```
+
+---
+
+# 01.08 Compound types
+
+---
+
+## 01.08.01 Tuples
+
+A **tuple** is a way to **group multiple values into a single variable**, even if they **are of different types**.
+
+```rust
+let data = (52, 1.67, 'F');
+```
+
+* `52` -> integer
+* `1.67` -> decimal
+* `'F'` -> character
+
+### Index access
+
+Each value has a **fixed position**, starting at **0**.
+
+```rust
+let age = data.0;
+```
+
+* `.0` -> first value
+* `.1` -> second
+* ...
+
+### Destructuring
+
+You can “break” the tuple into individual variables:
+
+```rust
+let (age, height, initial) = data;
+```
+
+### What are they used for?
+
+1. Returning multiple values from a function
+
+```rust
+fn calculate() -> (i32, f64) {
+	(30, 1.80)
+}
+```
+
+2. Grouping small related data
+
+* not worth creating a `struct`
+* the data belongs together
+* the meaning is obvious
+
+```rust
+let coordinates = (10, 20.54);
+```
+
+* `10` -> `i32`
+* `20.54` -> `f64`
+
+### When not to use them
+
+If you have:
+
+* many fields
+* complex data
+* unclear meaning
+
+Then **use a** `struct`.
+
+---
+
+## 01.08.02 Arrays
+
+A collection of:
+
+* values **of the same type**
+* with **fixed size**
+* stored **contiguously in memory**
+
+```rust
+let numbers = [1, 2, 3, 4, 5];
+```
+
+* type -> `i32` (inferred)
+* size -> `5`
+* indices -> `0` to `4`
+
+### Explicit type
+
+If you want to be clear (or the compiler demands it):
+
+```rust
+let numbers: [u32; 5] = [1, 2, 3, 4, 5];
+```
+
+* *“array of **5** `i32` integers”*
+
+### Element access
+
+Accessed using **indices**:
+
+```rust
+let first = numbers[0];
+```
+
+### Out-of-bounds access
+
+This is **not forgiven**:
+
+```rust
+let x = numbers[10]; // panic
+```
