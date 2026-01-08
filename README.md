@@ -17,12 +17,13 @@ using my own words and examples.
 #### 🔌 Networking
 Notes related to computer networking concepts. *(work in progress)*
 
-- [`00. Network Devices.md`](en/networking/00.%20Network%20Devices.md) — network definition, nodes, switches, firewalls
+- [`00. Network Devices.md`](en/networking/00.%20Network%20Devices.md)
 
 #### 🦀 Rust
 Notes related to learning Rust fundamentals and experiments.
 
-- [`00. Variables and Mutability.md`](en/rust/00.%20Variables%20and%20Mutability.md) — variables, mutability, and basic ownership concepts
+- [`00. Variables and Mutability.md`](en/rust/00.%20Variables%20and%20Mutability.md)
+- [`01. Data Types.md`](en/rust/01.%20Data%20Types.md)
 
 ---
 
@@ -42,10 +43,10 @@ práctica, usando mis propias palabras y ejemplos.
 #### 🔌 Redes
 Apuntes relacionados con conceptos de redes de computadoras. *(en progreso)*
 
-- [`00. Dispositivos de Red.md`](es/networking/00.%20Dispositivos%20de%20Red.md) — definición de red, nodos, switches, firewalls
+- [`00. Dispositivos de Red.md`](es/networking/00.%20Dispositivos%20de%20Red.md)
 
 #### 🦀 Rust
 Apuntes relacionados con el aprendizaje de fundamentos de Rust y experimentos.
 
-- [`00. Variables y Mutabilidad.md`](es/rust/00.%20Variables%20y%20Mutabilidad.md) —
-- [`01. Tipos de Datos.md`](es/rust/01.%20Tipos%20de%20Datos.md) —
+- [`00. Variables y Mutabilidad.md`](es/rust/00.%20Variables%20y%20Mutabilidad.md)
+- [`01. Tipos de Datos.md`](es/rust/01.%20Tipos%20de%20Datos.md)
