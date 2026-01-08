@@ -47,4 +47,5 @@ Apuntes relacionados con conceptos de redes de computadoras. *(en progreso)*
 #### 🦀 Rust
 Apuntes relacionados con el aprendizaje de fundamentos de Rust y experimentos.
 
-- [`00. Variables y Mutabilidad.md`](es/rust/00.%20Variables%20y%20Mutabilidad.md) — variables, mutabilidad y conceptos básicos de ownership
+- [`00. Variables y Mutabilidad.md`](es/rust/00.%20Variables%20y%20Mutabilidad.md) —
+- [`01. Tipos de Datos.md`](es/rust/01.%20Tipos%20de%20Datos.md) —
